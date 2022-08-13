@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import About from './components/About';
-import Search from './components/Search';
+import Home from './components/Home';
 import Scrap from './components/Scrap';
 
 import reportWebVitals from './reportWebVitals';
@@ -20,10 +20,10 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path ="/" element={<App />}>
-          <Route path ="" element={<Search />} />
+          <Route path ="" element={<Home />} />
           <Route path ="about" element={<About />} />
         </Route>
-        <Route path="test" element={<Search />} />
+        <Route path="test" element={<Home />} />
         <Route path="scrap" element={<Scrap />} />
       </Routes>
     </BrowserRouter>

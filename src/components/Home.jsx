@@ -2,13 +2,18 @@
  * 
  */
 
-import { useEffect, useState } from "react";
+//import { useEffect, useState } from "react";
+import SearchBarArea from './SearchBarArea';
+import SearchResultsArea from './SearchResultsArea';
 
-function Search () {
+
+function Home () {
+
+/*  
 console.log('search()');
 const APIkey = 'AIzaSyC6uq3lFzxEQlANwUly9GGsxWHQQ2n3SgU';
 const URLbase = 'https://www.googleapis.com/youtube/v3/search'; 
-const searchTerm = 'Ariana Grande';
+const searchTerm = 'Lebron James';
 const URL = `${URLbase}?key=${APIkey}&part=snippet&type=video&q=${searchTerm}`;
 let [searchResults, setSearchResults] = useState(0); //use state to trigger render when result is returned, and avoid infinite loop
 let [items, setItems] = useState(0); //use state to trigger re-render when we have mapped output, and to avoid infinite loop
@@ -52,13 +57,20 @@ useEffect(() => {
     console.log(`items: ${items}`)
   }
 });
+*/
  
 return (
+  /*
   <main style={{ padding: "1rem 0" }}>
     <h2>Search</h2>  
     {items}
   </main>
+  */
+  <>
+    <SearchBarArea />
+    <SearchResultsArea />
+  </>
   )
 }
 
-export default Search;
+export default Home;

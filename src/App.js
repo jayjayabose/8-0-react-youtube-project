@@ -1,8 +1,9 @@
-//import './App.css';
+import './App.css';
 import { Link, Outlet } from 'react-router-dom';
 
 function App() {
   return (
+    /*
     <div className="App">
       <header className="App-header"
         style={{
@@ -16,6 +17,14 @@ function App() {
       </header>
       <Outlet />
     </div>
+    */
+    <div id="app">
+      <div id = "navBar">
+        Youtube | Home | About
+      </div>    
+      <Outlet />
+    </div>
+    
   );
 }
 
