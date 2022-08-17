@@ -55,8 +55,6 @@ function SearchResultsArea () {
       <div id = "searchResultsArea">
         {items}      
       </div>        
-
-
       )
     }
 

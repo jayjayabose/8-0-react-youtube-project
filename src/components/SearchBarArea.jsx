@@ -1,8 +1,11 @@
 function SearchBarArea () {
+    
+
+
     return (
         <div id = "searchBarArea">
             <div id = "searchWrapper">
-                <input type="text" id="searchInput" value="Search... [?]" />            
+                <input type="text" id="searchInput" value="Search... [?]" onChange={handleChange}/>            
                 <input type="button" id="searchButton" value="Search" />
             </div>    
             <div id = "noSearchResults">
@@ -10,6 +13,10 @@ function SearchBarArea () {
             </div>
         </div>
     )
+}
+
+function handleChange() {
+
 }
 
 export default SearchBarArea;

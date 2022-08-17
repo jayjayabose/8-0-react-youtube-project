@@ -2,7 +2,8 @@
   * make "no search results dynamic"
  */
 
- import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import NoSearchResults from './NoSearchResults';
 
 function Home () {
   console.log('Home()');
@@ -13,7 +14,7 @@ function Home () {
   let [searchResults, setSearchResults] = useState(); //api results
   let [items, setItems] = useState(); //array of <div>s to render (couldl I not factor this out? I tried but got errors and decided not to pursue)
   let [refreshResults, setRefreshResults] = useState(false); //use state to trigger render when result is returned, and avoid infinite loop 
-  
+  let [displayNoSearchMsg, setdisplayNoSearchMsg] = useState(true);
 
   console.log(`home:refreshResults: ${refreshResults}`);
   const handleInputChange = (event) => {
@@ -40,6 +41,7 @@ function Home () {
       // what is the reason not to do this in the above then 
       setSearchResults(jsonResponse);          
       setRefreshResults(true);
+      setdisplayNoSearchMsg(false);
 
     }).catch((error) => {
       console.log(error);
@@ -78,9 +80,7 @@ function Home () {
             <input type="button" id="searchButton" value="Search" onClick={handleSearch}/>
             {/*<button id="searchButton" type="submit">Search</button>*/}
         </div>    
-        <div id = "noSearchResults">
-            No Search Results Yet!, Please submit a search above!
-        </div>
+        <NoSearchResults displayNoSearchMsg={displayNoSearchMsg}/>        
     </div>
     <div id = "searchResultsArea">
       {items}      
