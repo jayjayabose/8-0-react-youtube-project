@@ -1,26 +1,33 @@
 /** NOTES 
- * 
+  * make "no search results dynamic"
  */
 
-//import { useEffect, useState } from "react";
-import SearchBarArea from './SearchBarArea';
-import SearchResultsArea from './SearchResultsArea';
-
+ import { useEffect, useState } from "react";
 
 function Home () {
+  console.log('Home()');
+  const APIkey = 'AIzaSyC6uq3lFzxEQlANwUly9GGsxWHQQ2n3SgU';
+  const URLbase = 'https://www.googleapis.com/youtube/v3/search'; 
+  
+  let [userInput, setUserInput] = useState('');
+  let [searchResults, setSearchResults] = useState(); //api results
+  let [items, setItems] = useState(); //array of <div>s to render (couldl I not factor this out? I tried but got errors and decided not to pursue)
+  let [refreshResults, setRefreshResults] = useState(false); //use state to trigger render when result is returned, and avoid infinite loop 
+  
 
-/*  
-console.log('search()');
-const APIkey = 'AIzaSyC6uq3lFzxEQlANwUly9GGsxWHQQ2n3SgU';
-const URLbase = 'https://www.googleapis.com/youtube/v3/search'; 
-const searchTerm = 'Lebron James';
-const URL = `${URLbase}?key=${APIkey}&part=snippet&type=video&q=${searchTerm}`;
-let [searchResults, setSearchResults] = useState(0); //use state to trigger render when result is returned, and avoid infinite loop
-let [items, setItems] = useState(0); //use state to trigger re-render when we have mapped output, and to avoid infinite loop
-
-useEffect(() => {
-  if (searchResults === 0) { //do this only once, avoid infinite loop
+  console.log(`home:refreshResults: ${refreshResults}`);
+  const handleInputChange = (event) => {
+    setUserInput(event.target.value);
+  }
+  
+  //run search on click
+  const handleSearch = (event) => {
+    let URL = `${URLbase}?key=${APIkey}&part=snippet&type=video&q=${userInput}`;
+    
     console.log(`fetch`);
+    console.log(`fetch: userINput ${userInput}`);
+    console.log(`fetch: ${URL}`);
+
     fetch(URL)
     .then((response) => {
       if (response.status >= 200 && response.status <= 299) {
@@ -30,47 +37,56 @@ useEffect(() => {
       }
     })
     .then((jsonResponse) => {
-      // do whatever you want with the JSON response
-      console.log(`jsonResponse: ${JSON.stringify(jsonResponse)}`);
-      setSearchResults(jsonResponse);      
-      console.log(`searchResults: ${searchResults}`); //this is not working?
-
+      // what is the reason not to do this in the above then 
+      setSearchResults(jsonResponse);          
+      setRefreshResults(true);
 
     }).catch((error) => {
-      // Handle the error
       console.log(error);
     });
+
   }
+
   
-  console.log(`searchResults: ${searchResults}`); //this is not working?
+  useEffect(() => {
+    console.log(`useEffect(): refreshResults: ${refreshResults}`)
+  
+    //if we have new search results, build an array of search results to render
+    if(refreshResults){ 
+      setRefreshResults(false); 
+      console.log(`build items`);
 
-
-  if(searchResults !== 0 && items === 0){ //do this only once, avoid infinite loop
-    console.log(`build items`);
-    setItems (searchResults.items.map(item => {  
-      return (<li> 
-          {item.snippet.title} <br/> 
-          {item.snippet.thumbnails.medium.url} <br/> 
-          {`https://www.youtube.com/watch?v=${item.id.videoId}`}
-        </li>);  
-    })); 
-    console.log(`items: ${items}`)
-  }
-});
-*/
- 
-return (
-  /*
-  <main style={{ padding: "1rem 0" }}>
-    <h2>Search</h2>  
-    {items}
-  </main>
-  */
-  <>
-    <SearchBarArea />
-    <SearchResultsArea />
-  </>
-  )
+      setItems (searchResults.items.map(item => {          
+        return ( 
+          <div class = 'result'>  
+            <img class ="resultElement" src={item.snippet.thumbnails.medium.url} />
+            <div class ="resultElement">{item.snippet.title}</div>              
+          </div>
+          );  
+          /* use this for link  {`https://www.youtube.com/watch?v=${item.id.videoId}`}   */
+      })); 
+      console.log(`items: ${items}`)
+    }
+  });  
+  
+  //render page
+  return (
+    <>
+    <div id = "searchBarArea">
+        <div id = "searchWrapper">
+            <input type="text" id="searchInput" value={userInput} onChange={handleInputChange}/>            
+            <input type="button" id="searchButton" value="Search" onClick={handleSearch}/>
+            {/*<button id="searchButton" type="submit">Search</button>*/}
+        </div>    
+        <div id = "noSearchResults">
+            No Search Results Yet!, Please submit a search above!
+        </div>
+    </div>
+    <div id = "searchResultsArea">
+      {items}      
+    </div>   
+    </>
+  )   
 }
 
 export default Home;
