@@ -91,3 +91,10 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Typical
     width: 100%;  
     text-align: left;
 }
+
+#videoArea {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    margin-right: 0px;
+    margin-left: 0px;    
+}

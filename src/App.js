@@ -20,7 +20,7 @@ function App() {
     */
     <div id="app">
       <div id = "navBar">
-        Youtube | Home | About
+        Youtube | <Link to="/">Home</Link> | <Link to="/About">About</Link>
       </div>    
       <Outlet />
     </div>

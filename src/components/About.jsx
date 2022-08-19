@@ -1,7 +1,7 @@
 function About () {
     return (
-        <main style={{ padding: "1rem 0" }}>
-        <h2>About</h2>
+        <main style={{ padding: "1rem 0" }}>        
+        This page will be all about me.
       </main>
     )
 }

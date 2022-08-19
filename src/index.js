@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import About from './components/About';
 import Home from './components/Home';
+import Videos from './components/Videos';
 import Scrap from './components/Scrap';
 
 import reportWebVitals from './reportWebVitals';
@@ -22,6 +23,9 @@ root.render(
         <Route path ="/" element={<App />}>
           <Route path ="" element={<Home />} />
           <Route path ="about" element={<About />} />
+          <Route path="videos" element={<Videos />} >
+            <Route path=":id" element={Videos} />
+          </Route>
         </Route>
         <Route path="test" element={<Home />} />
         <Route path="scrap" element={<Scrap />} />

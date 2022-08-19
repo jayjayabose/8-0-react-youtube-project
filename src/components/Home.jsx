@@ -3,6 +3,7 @@
  */
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import NoSearchResults from './NoSearchResults';
 
 function Home () {
@@ -59,11 +60,12 @@ function Home () {
       console.log(`build items`);
 
       setItems (searchResults.items.map(item => {          
-        return ( 
-          <div class = 'result'>  
+        return ( <Link to={`/Videos/${item.id.videoId}`}> 
+          <div class = 'result'> 
             <img class ="resultElement" src={item.snippet.thumbnails.medium.url} />
-            <div class ="resultElement">{item.snippet.title}</div>              
+            <div class ="resultElement"> {item.snippet.title}  </div>     
           </div>
+          </Link>
           );  
           /* use this for link  {`https://www.youtube.com/watch?v=${item.id.videoId}`}   */
       })); 

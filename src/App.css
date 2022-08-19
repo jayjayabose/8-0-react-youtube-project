@@ -7,7 +7,6 @@
   justify-content: center;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  border: 3px solid green;
 }
 
 #navBar {
@@ -15,12 +14,10 @@
   color: white;
   padding: 15px;
   text-align: left;
-  border: 3px solid black;
 }
 
 #searchBarArea {    
   padding: 20px;
-  border: 3px solid gold;
 }
 
 #searchWrapper{
@@ -64,7 +61,6 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Typical
   grid-template-columns: 1fr 1fr;    
   column-gap: 1.5rem;
   row-gap: 1.5rem;
-  border: 3px solid blue;
 }
 
 @media screen and (max-width: 700px) {
@@ -80,14 +76,19 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Typical
   justify-content: center;
   align-items: center;
   */
-  border: 1px dashed red;
   row-gap: .5rem;
   
 }
 
 .resultElement {
   grid-column: 2 / 3;
-  border: 1px solid red;
   width: 100%;  
   text-align: left;
+}
+
+#videoArea {
+  margin-top: 2.5rem;
+  margin-bottom: 0rem;
+  margin-right: 0px;
+  margin-left: 0px;    
 }
