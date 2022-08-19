@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 
 function Videos () {
+    //make this page responsive
     let params = useParams();
     return(
         <div id = "videoArea">

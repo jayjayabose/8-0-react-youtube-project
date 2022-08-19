@@ -60,7 +60,7 @@ function Home () {
       console.log(`build items`);
 
       setItems (searchResults.items.map(item => {          
-        return ( <Link to={`/Videos/${item.id.videoId}`}> 
+        return ( <Link class ="resultLink" to={`/Videos/${item.id.videoId}`}>  
           <div class = 'result'> 
             <img class ="resultElement" src={item.snippet.thumbnails.medium.url} />
             <div class ="resultElement"> {item.snippet.title}  </div>     

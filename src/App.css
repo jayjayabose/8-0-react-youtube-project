@@ -16,6 +16,11 @@
   text-align: left;
 }
 
+#navBar a {
+  color: white;
+  text-decoration: none;
+}
+
 #searchBarArea {    
   padding: 20px;
 }
@@ -53,7 +58,7 @@
   margin-left: 0px;
 }
 /* 
-might be nices to use flex box
+might be nice to use flex box
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Typical_Use_Cases_of_Flexbox
 */
 #searchResultsArea {
@@ -69,13 +74,15 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Typical
   }
 }
 
+/*this approach seems a bit clunky*/
+.resultLink {
+  text-decoration: none;
+  color: black;  
+}
+
 .result{
   display: grid;
   grid-template-columns: 1fr 320px 1fr;
-  /*
-  justify-content: center;
-  align-items: center;
-  */
   row-gap: .5rem;
   
 }
